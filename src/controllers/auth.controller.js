@@ -1,6 +1,7 @@
 const userModel=require('../models/user.model');
 
 const jwt=require('jsonwebtoken');
+const emailService=require('../services/email.service');
 
 async function registerUser(req,res){
     const {email,name,password}=req.body;
@@ -24,6 +25,8 @@ async function registerUser(req,res){
     email:user.email,
     name:user.name
   }});
+
+  await emailService.sendRegistrationEmail(user.email,user.name);
 
 }
 
