@@ -40,7 +40,9 @@ accountSchema.methods.getBalance=async function(){
     
     
     },
-        {$project:{balance:{$subtract:["$totalDebit","$totalCredit"]}}}
+        {$project:{
+    balance:{$subtract:["$totalCredit","$totalDebit"]}
+}}
 
 
      ]);

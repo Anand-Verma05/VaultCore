@@ -15,4 +15,32 @@ async function createAccount(req,res){
 
 }
 
-module.exports={createAccount};
+async function getUserAccountController(req,res){
+    const accounts=await accountModel.find({user:req.user._id});
+
+    res.status(200).json({message:'Accounts retrieved successfully',accounts});
+
+}
+
+
+async function getAccountBalanceController(req,res){
+    const {accountId}=req.params;
+
+    const account=await accountModel.findOne({
+        _id:accountId,
+        user:req.user._id
+    });
+
+    if(!account){
+        return res.status(404).json({message:'Account not found'});
+    }
+
+    const balance=await account.getBalance();
+
+    res.status(200).json({message:'Account balance retrieved successfully',balance});
+
+
+
+}
+
+module.exports={createAccount,getUserAccountController,getAccountBalanceController};
