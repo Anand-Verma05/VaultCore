@@ -8,5 +8,9 @@ const transactionController=require('../controllers/transaction.controller');
 transactionRouter.post("/",authMiddleware.authMiddlerware,transactionController.createTransaction);
 
 
+//create initial funds transaction for system user
+
+transactionRouter.post("/initial-funds",authMiddleware.authSystemUserMiddleware,transactionController.createInitialFundsTransaction);
+
 
 module.exports=transactionRouter;
