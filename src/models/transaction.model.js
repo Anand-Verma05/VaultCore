@@ -3,14 +3,14 @@ const mongoose=require('mongoose');
 
 const transactionSchema=new mongoose.Schema({
     fromAccount:{
-        type:mongoose.Schema.Types.objectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:'Account',
         required:[true,"From account is required"],
         index:true
     }
     ,
     toAccount:{
-        type:mongoose.Schema.Types.objectId,
+        type:mongoose.Schema.Types.ObjectId,
         ref:'Account',
         required:[true,"To account is required"],
         index:true

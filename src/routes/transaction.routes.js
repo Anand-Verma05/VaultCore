@@ -1,9 +1,11 @@
 const {Router}=require('express');
 const authMiddleware=require('../middleware/auth.middleware');
 const transactionRouter=Router();
+const transactionController=require('../controllers/transaction.controller');
 
 
-transactionRouter.post("/",authMiddleware.authMiddlerware,);
+//create new transaction
+transactionRouter.post("/",authMiddleware.authMiddlerware,transactionController.createTransaction);
 
 
 

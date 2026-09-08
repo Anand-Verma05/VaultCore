@@ -46,4 +46,25 @@ async function sendRegistrationEmail(userEmail,name){
     await sendEmail(userEmail, subject, text, html);
 } 
 
-module.exports = {sendEmail, sendRegistrationEmail};
+// async function sendTransactionEmail(userEmail,transactionDetails){
+//     const subject = 'Transaction Notification';
+//     const text = `Hello,\n\nA transaction has been made on your account:\n\n${transactionDetails}\n\nBest regards,\nThe VaultCore Team`;
+//     const html = `<p>Hello,</p><p>A transaction has been made on your account:</p><p>${transactionDetails}</p><p>Best regards,<br>The VaultCore Team</p>`;
+//     await sendEmail(userEmail, subject, text, html);
+// }
+
+async function  sendTransactionEmail(userEmail,name,amount,toAccount){
+    const subject = 'Transaction Notification';
+    const text = `Hello ${name},\n\nA transaction of amount ${amount} has been made to account ${toAccount}.\n\nBest regards,\nThe VaultCore Team`;
+    const html = `<p>Hello ${name},</p><p>A transaction of amount <strong>${amount}</strong> has been made to account <strong>${toAccount}</strong>.</p><p>Best regards,<br>The VaultCore Team</p>`;
+    await sendEmail(userEmail, subject, text, html);
+}
+
+async function sendTransactionfailureEmail(userEmail,name,amount,toAccount){
+    const subject = 'Transaction Failure Notification';
+    const text = `Hello ${name},\n\nWe regret to inform you that a transaction of amount ${amount} to account ${toAccount} has failed.\n\nPlease check your account and try again.\n\nBest regards,\nThe VaultCore Team`;
+    const html = `<p>Hello ${name},</p><p>We regret to inform you that a transaction of amount <strong>${amount}</strong> to account <strong>${toAccount}</strong> has failed.</p><p>Please check your account and try again.</p><p>Best regards,<br>The VaultCore Team</p>`;
+    await sendEmail(userEmail, subject, text, html);
+}
+
+module.exports = {sendEmail, sendRegistrationEmail, sendTransactionEmail, sendTransactionfailureEmail};
