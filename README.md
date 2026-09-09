@@ -448,27 +448,6 @@ Authentication, authorization, account ownership validation, token expiration, a
 
 ---
 
-## 📌 Future Improvements
-
-Potential extensions include:
-
-* Redis-based idempotency locks
-* Rate limiting
-* Refresh-token rotation
-* Transaction history APIs
-* Pagination and filtering
-* Scheduled transaction processing
-* Transaction reversal APIs
-* Event-driven transaction notifications
-* Audit logging
-* Redis caching
-* Docker containerization
-* Automated unit and integration tests
-* CI/CD pipeline
-* Production monitoring and observability
-
----
-
 ## 👨‍💻 Author
 
 **Anand Verma**
